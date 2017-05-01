@@ -24,5 +24,5 @@ target_link_libraries(example ${catkin_LIBRARIES})
 add_executable(realsense_viewer src/realsense_viewer.cpp)
 target_link_libraries(realsense_viewer ${catkin_LIBRARIES})
 
-#add_executable(correspondence_grouping src/correspondence_grouping.cpp)
-#target_link_libraries(correspondence_grouping ${catkin_LIBRARIES})
+add_executable(correspondence_grouping src/correspondence_grouping.cpp)
+target_link_libraries(correspondence_grouping ${catkin_LIBRARIES})

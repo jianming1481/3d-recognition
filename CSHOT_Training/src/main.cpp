@@ -182,7 +182,7 @@ int main(int argc,char **argv)
 	SimpleRealSenseViewer v;
     ros::Subscriber cloud_sub = n.subscribe("/camera/depth/points", 1, &SimpleRealSenseViewer::cloud_cb,&v);
     boost::thread* thr = new boost::thread(boost::bind(&SimpleRealSenseViewer::run, &v));
-    v.SetInputDirectory("/home/iclab-giga/catkin_ws/devel/lib/CG_Online/");
+    v.SetInputDirectory("/home/iclab-ming/3d_ws/devel/lib/CG_Online/");
     ros::spin();
     v.run();
     ros::Rate loop_rate(100);

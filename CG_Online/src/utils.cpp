@@ -221,8 +221,8 @@ void rotate(vtkPolyData *polyData, const float angle, const float axis[3])
 	vtkTransform* transform = vtkTransform::New();
 	transform->RotateWXYZ(angle, axis[0], axis[1], axis[2]);
 	vtkTransformFilter* transformFilter = vtkTransformFilter::New();
-	transformFilter->SetInputData(polyData);
-	//transformFilter->SetInputConnection(polyData->GetProducerPort());
+	//transformFilter->SetInputData(polyData);
+	transformFilter->SetInputConnection(polyData->GetProducerPort());
 	transformFilter->SetTransform(transform);
 	transformFilter->Update();
 	polyData->ShallowCopy(transformFilter->GetPolyDataOutput());
@@ -262,8 +262,8 @@ void cleanPolyData(vtkPolyData *polyData, const bool mergePoints, const double t
 	}
 
 	vtkCleanPolyData* cleanPolyData = vtkCleanPolyData::New();
-	cleanPolyData->SetInputData(polyData);
-	//cleanPolyData->SetInputConnection(polyData->GetProducerPort());
+	//cleanPolyData->SetInputData(polyData);
+	cleanPolyData->SetInputConnection(polyData->GetProducerPort());
 	cleanPolyData->SetAbsoluteTolerance(tolerance);
 	cleanPolyData->SetPointMerging(mergePoints);
 	cleanPolyData->ToleranceIsAbsoluteOn();
@@ -328,8 +328,8 @@ void computeNormals(vtkPolyData *polyData)
 	//vtkSmartPointer<vtkPolyDataNormals> polydataNormals = vtkSmartPointer<vtkPolyDataNormals>::New();
 
 	polydataNormals->SplittingOff();
-	polydataNormals->SetInputData(polyData);
-	//polydataNormals->SetInputConnection(polyData->GetProducerPort());
+	//polydataNormals->SetInputData(polyData);
+	polydataNormals->SetInputConnection(polyData->GetProducerPort());
 	//polydataNormals->SetInput(polyData);
 	polydataNormals->ComputePointNormalsOn();
 	polydataNormals->AutoOrientNormalsOff();
